@@ -1,0 +1,55 @@
+body {
+    background-color: rgb(64, 64, 64);
+}
+
+
+h1 {
+    padding: 30px 0px 0px 30px;
+    border: 2px solid white;
+    background-color: white;
+}
+h1 div {
+    display: grid;
+}
+
+.container{
+    padding-left: 30px;
+    border: 2px solid white;
+    background-color: white;
+}
+
+.barraAgregar {
+    padding-left: 30px;
+    border: 2px solid white;
+    background-color: white;
+}
+.items {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 4fr;
+    align-items: center;
+    gap: 10px;
+
+}
+
+.items label {
+    width: 130px;
+}
+
+#total {
+    background-color: white;
+}
+
+.buttons button {
+    color: white;
+    background-color: rgb(64, 64, 64);
+    margin: 10px;
+}
+
+.eliminar {
+    width: 70px;
+    margin-left: 30px;
+}
+
+.reiniciar {
+    background-color: red !important;
+}
