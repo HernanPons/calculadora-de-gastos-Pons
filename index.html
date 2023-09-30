@@ -4,32 +4,78 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
+    <script src= "./js/main.js" defer></script>
     <title>Gastos mensuales</title>
 </head>
 <body>
     
+    <header class="header">
+        <h1>Gastos Mensuales</h1>
+    </header>
 
-<h1>Gastos Mensuales</h1>
 
-<div class="items barraAgregar">
-    <label for="Agregar categoria"> <h4>Agregar nuevo gasto</h4></label>
-    <input type="text" placeholder="Ingrese nuevo gasto" class="agregarItem" id="AgregarCategoria">   
-    <input type="number" name="" class="valorDelGasto" placeholder="Ingrese el valor del gasto">
-    <button class= "agregar" onclick="nuevoGasto ()" >Agregar</button>
+<div class="bodyUno">
 
+    <div class="items barraAgregar">
+        <div></div>
+        <h5 class="titulos">Nombre del gasto</h5>
+        <h5 class="titulos">Valor del gasto</h5>
+        <h5 class="titulos">Categoria</h5>
+        <div></div>
+    </div>
+
+    <div class="items barraAgregar">
+        <label for="Agregar categoria"> <h4>Agregar nuevo gasto</h4></label>
+        <input type="text" placeholder="Ingrese nuevo gasto" class="agregarItem" id="AgregarCategoria">   
+        <input type="number" name="" class="valorDelGasto" placeholder="Ingrese el valor del gasto">
+        <select name="select" id="selector">
+            <option value="vivienda">Vivienda</option>
+            <option value="alimentos">Alimentos</option>
+            <option value="transporte">Transporte</option>
+            <option value="entretenimiento">Entretenimiento</option>
+            <option value="impuestos">Impuestos</option>
+            <option value="otros">Otros</option>
+        </select>
+        <button class= "agregar" onclick="nuevoGasto ()" >Agregar</button>
+
+    </div>
+
+    <div class="container"></div>
+
+    <div class="container buttons">
+        <button onclick="sumarMontos()">Sumar Montos</button>
+        <button class="reiniciar" onclick="reiniciarMontos ()" >Eliminar todos los gastos</button>
+    </div>
 </div>
 
-<div class="container"></div>
-
-<div class="container buttons">
-    <button onclick="sumarMontos()">Sumar Montos</button>
-    <button class="reiniciar" onclick="reiniciarMontos ()" >Eliminar todos los gastos</button>
-
-
-</div>
 
 <h3 id="total">Total: </h3>
 
-    <script src= "./js/main.js"></script>
+
+<div class="bodyDos">
+    <h5 class="titulos">Filtrar por categorias</h5>
+
+
+    <div>
+            
+        <select name="filter" id="filterSelect">
+            <option value="vivienda">Vivienda</option>
+            <option value="alimentos">Alimentos</option>
+            <option value="transporte">Transporte</option>
+            <option value="entretenimiento">Entretenimiento</option>
+            <option value="impuestos">Impuestos</option>
+            <option value="otros">Otros</option>
+        </select>
+        <button onclick="filtrarCategorias ()">Filtrar </button>
+    </div>       
+    <div id="resultados"></div>
+</div>
+
+
+
+
+
+
+    
 </body>
 </html>

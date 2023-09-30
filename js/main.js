@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function cargarGastos() {
     const gastosGuardados = JSON.parse(localStorage.getItem('gastos'));
+
     if (gastosGuardados) {
         gastos = gastosGuardados;
     }
@@ -48,11 +49,14 @@ function nuevoGasto() {
     const nombreInput = document.querySelector(".agregarItem");
     const valorDelGastoInput = document.querySelector(".valorDelGasto");
     const valorDelGastoTexto = parseInt(valorDelGastoInput.value);
+    const categoriaInput = document.querySelector("#selector")
+    const categoriaValor = categoriaInput.value
 
     if (nombreInput.value && !isNaN(valorDelGastoTexto)) {
         const nuevoGastoObjeto = {
             nombre: nombreInput.value,
-            valor: valorDelGastoTexto
+            valor: valorDelGastoTexto,
+            categoria: categoriaValor,
         };
 
         gastos.push(nuevoGastoObjeto);
@@ -102,3 +106,28 @@ function reiniciarMontos() {
         sumarMontos();
     }
 }
+
+function filtrarCategorias() {
+    const categoriaInput = document.querySelector("#filterSelect");
+    const categoriaValor = categoriaInput.value;
+
+    const resultadosDiv = document.getElementById("resultados");
+    resultadosDiv.innerHTML = "";
+    //console.log(categoriaValor)
+
+    const datosGuardados = JSON.parse(localStorage.getItem("gastos"));
+  
+    //console.log (datosGuardados)
+
+    const resultadosFiltro = datosGuardados.filter(gasto => gasto.categoria == categoriaValor);
+
+    console.log(resultadosFiltro);
+
+    resultadosFiltro.forEach((resultado, index) => {
+        const h4 = document.createElement("h4");
+        h4.textContent = `${resultado.nombre}  ${resultado.valor}  ${resultado.categoria}`;
+        resultadosDiv.appendChild(h4);
+    });
+} 
+
+
