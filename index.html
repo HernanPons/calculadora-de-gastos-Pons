@@ -13,31 +13,33 @@
         <h1>Gastos Mensuales</h1>
     </header>
 
-
 <div class="bodyUno">
-
     <div class="items barraAgregar">
-        <div></div>
-        <h5 class="titulos">Nombre del gasto</h5>
-        <h5 class="titulos">Valor del gasto</h5>
-        <h5 class="titulos">Categoria</h5>
-        <div></div>
-    </div>
-
-    <div class="items barraAgregar">
-        <label for="Agregar categoria"> <h4>Agregar nuevo gasto</h4></label>
-        <input type="text" placeholder="Ingrese nuevo gasto" class="agregarItem" id="AgregarCategoria">   
-        <input type="number" name="" class="valorDelGasto" placeholder="Ingrese el valor del gasto">
-        <select name="select" id="selector">
-            <option value="vivienda">Vivienda</option>
-            <option value="alimentos">Alimentos</option>
-            <option value="transporte">Transporte</option>
-            <option value="entretenimiento">Entretenimiento</option>
-            <option value="impuestos">Impuestos</option>
-            <option value="otros">Otros</option>
-        </select>
-        <button class= "agregar" onclick="nuevoGasto ()" >Agregar</button>
-
+        <div>     
+            <label for="Agregar categoria"> <h4>Agregar nuevo gasto</h4></label>
+        </div>
+        <div class="divInput">
+            <h5 class="titulos">Nombre del gasto</h5>
+            <input type="text" placeholder="Ingrese nuevo gasto" class="agregarItem" id="AgregarCategoria">   
+        </div>
+        <div class="divInput">
+            <h5 class="titulos">Valor del gasto</h5>
+            <input type="number" name="" class="valorDelGasto" placeholder="Ingrese el valor del gasto">
+        </div>
+        <div class="divInput">
+            <h5 class="titulos">Categoria</h5>
+            <select name="select" id="selector">
+                <option value="vivienda">Vivienda</option>
+                <option value="alimentos">Alimentos</option>
+                <option value="transporte">Transporte</option>
+                <option value="entretenimiento">Entretenimiento</option>
+                <option value="impuestos">Impuestos</option>
+                <option value="otros">Otros</option>
+            </select>
+        </div>
+        <div>
+            <button class= "agregar" onclick="nuevoGasto ()" >Agregar</button>
+        </div>
     </div>
 
     <div class="container"></div>
@@ -52,12 +54,9 @@
 <h3 id="total">Total: </h3>
 
 
-<div class="bodyDos">
+<div class="bodyDos divInput">
     <h5 class="titulos">Filtrar por categorias</h5>
-
-
-    <div>
-            
+    <div> 
         <select name="filter" id="filterSelect">
             <option value="vivienda">Vivienda</option>
             <option value="alimentos">Alimentos</option>
@@ -68,13 +67,8 @@
         </select>
         <button onclick="filtrarCategorias ()">Filtrar </button>
     </div>       
-    <div id="resultados"></div>
+    <div id="resultados""></div>
 </div>
-
-
-
-
-
 
     
 </body>

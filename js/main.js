@@ -16,15 +16,18 @@ function cargarGastos() {
 function dibujarHTML() {
     const container = document.querySelector(".container");
     container.innerHTML = "";
+    function capitalizeFirstLetter(str) {
+        return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+    }
 
     gastos.forEach((gasto, evt) => {
         const div = document.createElement("div");
-        div.className = "items";
+        div.className = "tabla";
 
-        const h4Nombre = document.createElement("h4");
-        h4Nombre.textContent = gasto.nombre;
+        const h4Nombre = document.createElement("p");
+        h4Nombre.textContent = capitalizeFirstLetter(gasto.nombre);
 
-        const h4Valor = document.createElement("h4");
+        const h4Valor = document.createElement("p");
         h4Valor.className = "monto";
         h4Valor.textContent = gasto.valor;
 
@@ -123,10 +126,15 @@ function filtrarCategorias() {
 
     console.log(resultadosFiltro);
 
-    resultadosFiltro.forEach((resultado, index) => {
-        const h4 = document.createElement("h4");
-        h4.textContent = `${resultado.nombre}  ${resultado.valor}  ${resultado.categoria}`;
-        resultadosDiv.appendChild(h4);
+    resultadosFiltro.forEach((resultado) => {
+        const pNombre = document.createElement("p");
+        pNombre.className = "resFiltro";
+        pNombre.textContent = `${resultado.nombre}`;
+        resultadosDiv.appendChild(pNombre);
+        const pValor = document.createElement("p");
+        pValor.className = "resFiltro";
+        pValor.textContent = `$${resultado.valor}`;
+        resultadosDiv.appendChild(pValor);
     });
 } 
 
