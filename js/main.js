@@ -29,7 +29,7 @@ function dibujarHTML() {
 
         const h4Valor = document.createElement("p");
         h4Valor.className = "monto";
-        h4Valor.textContent = gasto.valor;
+        h4Valor.textContent = `$${gasto.valor}`;
 
         const button = document.createElement("button");
         button.textContent = "eliminar";
@@ -99,7 +99,52 @@ function sumarMontos() {
     totalElement.textContent = "Total: " + suma.toFixed(2);
 }
 
+///////////////////////////////////////////////////////////////////////////////////////////////////
 function reiniciarMontos() {
+    const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+          confirmButton: 'btn btn-success',
+          cancelButton: 'btn btn-danger'
+        },
+        buttonsStyling: false
+      })
+      
+      swalWithBootstrapButtons.fire({
+        title: '¿Está seguro?',
+        text: "Si elimina todos los gastos, no podrá volver a recuperarlos.",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Sí, eliminar',
+        cancelButtonText: 'No, cancelar',
+        reverseButtons: true
+      }).then((result) => {
+        if (result.isConfirmed) {
+            localStorage.removeItem('gastos');
+            gastos = [];
+            dibujarHTML();
+            sumarMontos();
+        
+            swalWithBootstrapButtons.fire(
+                'Eliminado!',
+                'Se han eliminado todos los gastos guardados.',
+                'success'
+            )
+        } else if (
+          result.dismiss === Swal.DismissReason.cancel
+        ) {
+          swalWithBootstrapButtons.fire(
+            'Cancelado',
+            'Todos tus gastos siguen guardados :-)',
+            'error'
+          )
+        }
+      })
+}
+
+
+
+
+/* function reiniciarMontos() {
     const confirmacion = confirm("¿Estás seguro de que quieres eliminar todos los datos?");
     
     if (confirmacion) {
@@ -108,7 +153,7 @@ function reiniciarMontos() {
         dibujarHTML();
         sumarMontos();
     }
-}
+} */
 
 function filtrarCategorias() {
     const categoriaInput = document.querySelector("#filterSelect");

@@ -5,16 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
     <script src= "./js/main.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Gastos mensuales</title>
 </head>
 <body>
     
     <header class="header">
+        <!-- <img src="./Images/banner.jpg" alt="gastos mensuales"> -->
         <h1>Gastos Mensuales</h1>
     </header>
 
 <div class="bodyUno">
-    <div class="items barraAgregar">
+    <div class="items barraAgregar bgCustomGray">
         <div>     
             <label for="Agregar categoria"> <h4>Agregar nuevo gasto</h4></label>
         </div>
@@ -34,19 +36,20 @@
                 <option value="transporte">Transporte</option>
                 <option value="entretenimiento">Entretenimiento</option>
                 <option value="impuestos">Impuestos</option>
+                <option value="turismo">Turismo</option>
                 <option value="otros">Otros</option>
             </select>
         </div>
         <div>
-            <button class= "agregar" onclick="nuevoGasto ()" >Agregar</button>
+            <button class= "agregar " onclick="nuevoGasto ()" >Agregar</button>
         </div>
     </div>
 
     <div class="container"></div>
 
     <div class="container buttons">
-        <button onclick="sumarMontos()">Sumar Montos</button>
-        <button class="reiniciar" onclick="reiniciarMontos ()" >Eliminar todos los gastos</button>
+        <button class="btn" onclick="sumarMontos()">Sumar Montos</button>
+        <button class="reiniciar btn" onclick="reiniciarMontos ()" >Eliminar todos los gastos</button>
     </div>
 </div>
 
@@ -63,11 +66,12 @@
             <option value="transporte">Transporte</option>
             <option value="entretenimiento">Entretenimiento</option>
             <option value="impuestos">Impuestos</option>
+            <option value="turismo">Turismo</option>
             <option value="otros">Otros</option>
         </select>
         <button onclick="filtrarCategorias ()">Filtrar </button>
     </div>       
-    <div id="resultados""></div>
+    <div id="resultados"></div>
 </div>
 
     
