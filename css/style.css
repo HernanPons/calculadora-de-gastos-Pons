@@ -125,15 +125,16 @@ h1 {
 .dolar {
     width: 200px;
     height: 100px;
-    background-color: rgb(4, 255, 0);
+    border: solid black;
     position: absolute; 
-    top: 20px;
+    top: 16px;
     right: 30px;
     display: grid;
     grid-template-columns: 1fr;
     grid-column-gap: 10px;
+    border-radius: 20px;
 }
-.dolar, h5 {
+.dolar, h3 {
     place-items: center;
 }
     
