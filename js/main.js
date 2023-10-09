@@ -80,14 +80,6 @@ function eliminarGasto(evt) {
     sumarMontos ();
 }
 
-function reiniciarMontos() {
-    const elementos = document.querySelectorAll(".monto, .agregarItem");
-    elementos.forEach(elemento => {
-        elemento.value = "";
-    });
-    const totalElement = document.getElementById("total");
-    totalElement.textContent = "Total:";
-}
 
 function sumarMontos() {
     let suma = 0;
@@ -101,6 +93,13 @@ function sumarMontos() {
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 function reiniciarMontos() {
+    const elementos = document.querySelectorAll(".monto, .agregarItem");
+    elementos.forEach(elemento => {
+        elemento.value = "";
+    });
+    const totalElement = document.getElementById("total");
+    totalElement.textContent = "Total:";
+
     const swalWithBootstrapButtons = Swal.mixin({
         customClass: {
           confirmButton: 'btn btn-success',
@@ -142,45 +141,72 @@ function reiniciarMontos() {
 }
 
 
-
-
-/* function reiniciarMontos() {
-    const confirmacion = confirm("¿Estás seguro de que quieres eliminar todos los datos?");
-    
-    if (confirmacion) {
-        localStorage.removeItem('gastos');
-        gastos = [];
-        dibujarHTML();
-        sumarMontos();
-    }
-} */
-
 function filtrarCategorias() {
     const categoriaInput = document.querySelector("#filterSelect");
     const categoriaValor = categoriaInput.value;
 
     const resultadosDiv = document.getElementById("resultados");
     resultadosDiv.innerHTML = "";
-    //console.log(categoriaValor)
 
     const datosGuardados = JSON.parse(localStorage.getItem("gastos"));
-  
-    //console.log (datosGuardados)
 
     const resultadosFiltro = datosGuardados.filter(gasto => gasto.categoria == categoriaValor);
 
     console.log(resultadosFiltro);
 
     resultadosFiltro.forEach((resultado) => {
+        const divFilter = document.createElement("div")
+        divFilter.className = "tabla"
+
         const pNombre = document.createElement("p");
         pNombre.className = "resFiltro";
         pNombre.textContent = `${resultado.nombre}`;
-        resultadosDiv.appendChild(pNombre);
+        divFilter.appendChild(pNombre);
+
         const pValor = document.createElement("p");
         pValor.className = "resFiltro";
         pValor.textContent = `$${resultado.valor}`;
-        resultadosDiv.appendChild(pValor);
+        divFilter.appendChild(pValor);
+
+        resultadosDiv.appendChild(divFilter);
     });
 } 
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+let url = "https://dolarapi.com/v1/dolares/blue"
+
+fetch(url)
+    .then((res) => {
+        return res.json ()
+    })
+    .then((dolar) => {
+        let dolarCompra = dolar.compra;
+        let dolarVenta = dolar.venta;
+        let dolarFecha = dolar.fechaActualizacion;
+        
+        const fecha = new Date (dolarFecha)
+        const año = fecha.getFullYear();
+        const mes = (fecha.getMonth() + 1).toString().padStart(2, "0");
+        const dia = fecha.getDate().toString().padStart(2, "0");
+        const hora = fecha.getHours().toString().padStart(2, "0");
+        const minutos = fecha.getMinutes().toString().padStart(2, "0");
+
+        const fechaFormateada = `${dia}/${mes}/${año} ${hora}:${minutos}`;
+
+        let mostrarCompra = document.querySelector (".dolarCompra");
+        mostrarCompra.textContent = "$" + dolarCompra;
+
+        let mostrarVenta = document.querySelector (".dolarVenta");
+        mostrarVenta.textContent = "$" + dolarVenta;
+
+        let mostrarFecha = document.querySelector (".dolarFecha");
+        mostrarFecha.textContent = fechaFormateada;
+    })
+    .catch((err) => {
+        console.log(err)
+    })
 
 
