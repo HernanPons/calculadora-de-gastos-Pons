@@ -145,3 +145,40 @@ h1 {
 
 
 
+/*------------------------mobile-----------------------*/
+
+@media (max-width: 768px){
+.header {
+    height: 150px;
+}
+.dolar {
+    position: relative;
+    width: auto;
+    top: 0px;
+    right: 0px;
+    border-radius: 0px;  
+}
+.items {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.barraAgregar{
+    padding-left: 0px;
+    padding-top: 15px;
+    height: 250px;
+    margin-top: 100px;
+}
+.container {
+    padding: 0px;
+    width: auto;
+    position: relative;
+}
+.buttons {
+    text-align: center;
+}
+}
+
+
+
+

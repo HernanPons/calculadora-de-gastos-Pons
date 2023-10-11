@@ -1,4 +1,6 @@
 let gastos = [];
+let dolarVenta = [];
+
 
 document.addEventListener('DOMContentLoaded', () => {
     cargarGastos();
@@ -80,18 +82,24 @@ function eliminarGasto(evt) {
     sumarMontos ();
 }
 
-
 function sumarMontos() {
+    let totalUsd = 0;
     let suma = 0;
     gastos.forEach((gasto) => {
         suma += parseFloat(gasto.valor) || 0;
     });
 
+    totalEnDolares()
+    function totalEnDolares () {
+        totalUsd = parseFloat(suma / dolarVenta);
+    }
+
     const totalElement = document.getElementById("total");
-    totalElement.textContent = "Total: " + suma.toFixed(2);
+    totalElement.textContent = "Total: $" + suma.toFixed(2);
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
+
 function reiniciarMontos() {
     const elementos = document.querySelectorAll(".monto, .agregarItem");
     elementos.forEach(elemento => {
@@ -208,5 +216,6 @@ fetch(url)
     .catch((err) => {
         console.log(err)
     })
+    
 
 
