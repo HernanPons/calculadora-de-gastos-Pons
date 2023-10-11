@@ -161,7 +161,7 @@ h1 {
 .items {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 15px;
 }
 .barraAgregar{
     padding-left: 0px;
