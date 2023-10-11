@@ -10,12 +10,7 @@
 .bgCustomGray {
     background-color: #D5DADE
 }
-.bgCustomTLight {
-    background-color: #4F8392;
-}
-.bgCustomTDark {
-    background-color: #205B6B;
-}
+
 .btn-success {
     background-color: #28A745;
 }
@@ -161,7 +156,7 @@ h1 {
 .items {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 15px;
 }
 .barraAgregar{
     padding-left: 0px;
@@ -177,6 +172,17 @@ h1 {
 .buttons {
     text-align: center;
 }
+.divInput {
+    align-items: center;
+}
+.tabla {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: auto;
+    place-items: center;
+}
+
+
 }
 
 
